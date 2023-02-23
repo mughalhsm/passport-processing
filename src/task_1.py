@@ -1,5 +1,7 @@
-from passport_processor import PassportProcessor
 import pandas as pd
+
+from passport_processor import PassportProcessor
+
 
 def number_valid_passports() -> int:
     pp = PassportProcessor("input.txt")
@@ -10,7 +12,4 @@ def number_valid_passports() -> int:
 
 
 if __name__ == "__main__":
-   number_valid_passports()
-
-
-
+    number_valid_passports()

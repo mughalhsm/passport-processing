@@ -1,5 +1,6 @@
-from passport_processor import PassportProcessor
 import pandas as pd
+
+from passport_processor import PassportProcessor
 
 
 def number_valid_passports_with_validation() -> int:
