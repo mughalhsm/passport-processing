@@ -8,7 +8,6 @@ from passport_processor import PassportProcessor
 
 @pytest.fixture
 def test_input_file(tmp_path):
-    # Test input data
     test_data = (
         "ecl:gry pid:860033327 eyr:2020 hcl:#fffffd\n"
         "byr:1937 iyr:2017 cid:147 hgt:183cm\n\n"
