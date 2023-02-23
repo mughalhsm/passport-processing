@@ -2,7 +2,7 @@ from passport_processor import PassportProcessor
 import pandas as pd
 
 
-def number_valid_passports_with_validation():
+def number_valid_passports_with_validation() -> int:
     pp = PassportProcessor("input.txt")
     df = pp.process_passports()
     return len(df)

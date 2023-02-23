@@ -1,7 +1,7 @@
 from passport_processor import PassportProcessor
 import pandas as pd
 
-def number_valid_passports():
+def number_valid_passports() -> int:
     pp = PassportProcessor("input.txt")
     df = pp.create_dataframe()
     df = pp.remove_cid(df)
@@ -10,6 +10,7 @@ def number_valid_passports():
 
 
 if __name__ == "__main__":
-    number_valid_passports()
+   number_valid_passports()
+
 
 
