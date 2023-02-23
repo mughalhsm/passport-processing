@@ -27,7 +27,3 @@ repos:
     rev: v1.8.1
     hooks:
     -   id: darglint
-        name: darglint
-        entry: darglint
-        args: ['--verbosity=2', '--docstring-style=google', '--strictness=short', '{changed_files}']
-        language: system
