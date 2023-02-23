@@ -14,3 +14,20 @@ repos:
     hooks:
     -   id: isort
         additional_dependencies: [isort==5.9.3]
+-   repo: https://github.com/PyCQA/flake8
+    rev: 3.9.2
+    hooks:
+    -   id: flake8
+        additional_dependencies: [flake8==3.9.2]
+-   repo: https://github.com/PyCQA/bandit
+    rev: 1.7.0
+    hooks:
+    -   id: bandit
+-   repo: https://github.com/terrencepreilly/darglint
+    rev: v1.8.1
+    hooks:
+    -   id: darglint
+        name: darglint
+        entry: darglint
+        args: ['--verbosity=2', '--docstring-style=google', '--strictness=short', '{changed_files}']
+        language: system
