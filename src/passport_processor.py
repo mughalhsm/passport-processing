@@ -3,12 +3,6 @@ import re
 
 
 class PassportProcessor:
-    """
-    A class for processing passport data and performing various validation steps.
-
-    :param input_file: the path to the input file containing passport data
-
-    """    
     def __init__(self, input_file) -> None:
     
         self.input_file = input_file
