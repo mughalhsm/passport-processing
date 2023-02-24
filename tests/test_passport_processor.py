@@ -89,3 +89,86 @@ def test_create_dataframe_returns_correct_columns(passport_processor):
     df = passport_processor.create_dataframe()
     expected_columns = ["eyr", "iyr", "byr", "ecl", "pid", "hcl", "hgt", "cid"]
     assert all(col in df.columns for col in expected_columns)
+
+
+@pytest.fixture
+def test_df():
+    return pd.DataFrame(
+        {
+            "byr": [
+                "1930",
+                "1980",
+                "2005",
+                "1995",
+                "1910",
+                "1988",
+                "1975",
+                "1960",
+            ],  # noqa: E501
+            "iyr": [
+                "2017",
+                "2013",
+                "2020",
+                "2015",
+                "2005",
+                "2010",
+                "2015",
+                "2010",
+            ],  # noqa: E501
+            "eyr": [
+                "2020",
+                "2024",
+                "2025",
+                "2030",
+                "2025",
+                "2030",
+                "2025",
+                "2025",
+            ],  # noqa: E501
+            "hgt": [
+                "183cm",
+                "168cm",
+                "175cm",
+                "160cm",
+                "170cm",
+                "190cm",
+                "155cm",
+                "180cm",
+            ],
+            "hcl": [
+                "#a97842",
+                "#fffffd",
+                "#123456",
+                "#987654",
+                "#abcdef",
+                "#123abc",
+                "#456def",
+                "#789012",
+            ],
+            "ecl": ["amb", "brn", "blu", "gry", "grn", "hzl", "oth", "brn"],
+            "pid": [
+                "860033327",
+                "760753108",
+                "0123456789",
+                "123456789",
+                "000000001",
+                "1234567890",
+                "0987654321",
+                "123456789",
+            ],
+            "cid": ["147", "", "123", "", "456", "", "", "789"],
+        }
+    )
+
+
+def test_remove_cid(test_df, passport_processor):
+    result_df = passport_processor.remove_cid(test_df)
+    assert len(result_df.columns) == 7
+    assert "cid" not in result_df.columns
+
+
+def test_validate_birth_year(test_df, passport_processor):
+    result_df = passport_processor.validate_birth_year(test_df)
+    assert len(result_df) == 6
+    assert (result_df["byr"].values >= 1920).all()
+    assert (result_df["byr"].values <= 2002).all()
